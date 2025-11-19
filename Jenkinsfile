@@ -13,10 +13,15 @@ pipeline {
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
+    environment{
+        DEPLOY_TO = 'PRODUCTION'
+        Greeting = 'Good Day'
+    }
     stages {
         stage('Build') { 
             steps {
                 sh 'echo this is from build' 
+                shh 'env'
             }
         }
         stage('Test') { 
